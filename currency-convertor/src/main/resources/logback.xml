@@ -1,26 +1,15 @@
 <!-- configuration for logback http://logback.qos.ch/ -->
 <configuration>
-    <!-- logs to console -->
-    <appender name="APP" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <!--  log message format    http://logback.qos.ch/manual/layouts.html#conversionWord
-             %date ... date and time of event
-             %-5level ... level (debug/info/warn), left justified, minimum 5 characters
-             %logger{36} ... logger name, shortened to at most 36 characters
-             - ... literal dash
-             %message ... the logged text
-             %n - OS-dependent end of line, \n on Unix, \r\n on Windows
-            -->
-            <pattern>%date %-5level %logger - %message%n</pattern>
-        </encoder>
-    </appender>
 
-    <!-- default logging level -->
-    <root level="info">
-        <!-- reference to the used appender -->
-        <appender-ref ref="APP"/>
-    </root>
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+</appender>
 
-    <!-- list of logger prefixes with non-default logging levels -->
-    <logger name="org" level="info"/>
-</configuration>
+<root level="debug">
+<appender-ref ref="STDOUT" />
+</root>
+        </configuration>
